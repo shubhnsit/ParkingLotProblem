@@ -65,4 +65,24 @@ public class InputParser {
         }
     }
 
+    public void parseFileInput(String filePath) {
+        // Assuming input to be a valid file path.
+        File inputFile = new File(filePath);
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(inputFile));
+            String line;
+            try {
+                while ((line = br.readLine()) != null) {
+                    parseTextInput(line.trim());
+                }
+            } catch (IOException ex) {
+                System.out.println("Error in reading the input file.");
+                ex.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found in the path specified.");
+            e.printStackTrace();
+        }
+    }
+
 }

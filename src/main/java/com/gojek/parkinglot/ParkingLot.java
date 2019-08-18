@@ -121,4 +121,61 @@ public class ParkingLot {
         }
     }
 
+    public void getRegistrationNumbersFromColor(String color) {
+        if (this.MAX_SIZE == 0) {
+            System.out.println("Sorry, parking lot is not created");
+            System.out.println();
+        } else if (this.map3.containsKey(color)) {
+            ArrayList<String> regNoList = this.map3.get(color);
+            System.out.println();
+            for (int i=0; i < regNoList.size(); i++) {
+                if (!(i==regNoList.size() - 1)){
+                    System.out.print(regNoList.get(i) + ",");
+                } else {
+                    System.out.print(regNoList.get(i));
+                }
+            }
+        } else {
+            System.out.println("Not found");
+            System.out.println();
+        }
+    }
+    public void getSlotNumbersFromColor(String color) {
+        if (this.MAX_SIZE == 0) {
+            System.out.println("Sorry, parking lot is not created");
+            System.out.println();
+        } else if (this.map3.containsKey(color)) {
+            ArrayList<String> regNoList = this.map3.get(color);
+            ArrayList<Integer> slotList = new ArrayList<Integer>();
+            System.out.println();
+            for (int i=0; i < regNoList.size(); i++) {
+                slotList.add(Integer.valueOf(this.map2.get(regNoList.get(i))));
+            }
+            Collections.sort(slotList);
+            for (int j=0; j < slotList.size(); j++) {
+                if (!(j == slotList.size() - 1)) {
+                    System.out.print(slotList.get(j) + ",");
+                } else {
+                    System.out.print(slotList.get(j));
+                }
+            }
+            System.out.println();
+        } else {
+            System.out.println("Not found");
+            System.out.println();
+        }
+    }
+    public void getSlotNumberFromRegNo(String regNo) {
+        if (this.MAX_SIZE == 0) {
+            System.out.println("Sorry, parking lot is not created");
+            System.out.println();
+        } else if (this.map2.containsKey(regNo)) {
+            System.out.println(this.map2.get(regNo));
+        } else {
+            System.out.println("Not found");
+            System.out.println();
+        }
+    }
+
+
 }
